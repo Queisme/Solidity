@@ -1,12 +1,10 @@
----
-marp: true
----
+Smart Contracts: A Blockchain Program
 
-# Smart Contracts: A Blockchain Program
+A smart contract is blockchain-deployed code. 
 
-A smart contract is blockchain-deployed code. For example:
 
-```js
+For example:
+
 contract Agreement {
   address recipient;
   bool conditionIsMet;
@@ -19,7 +17,7 @@ contract Agreement {
 
   // ...
 }
-```
+
 
 ---
 

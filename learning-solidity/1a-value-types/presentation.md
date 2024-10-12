@@ -1,13 +1,6 @@
----
-marp: true
----
+Solidity Value Types
 
-# Solidity Value Types
-
-Let's look at a few important types
-
-```js
-contract Example {
+      contract Example {
   uint a;
   int b;
   bool c;
