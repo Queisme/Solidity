@@ -40,5 +40,14 @@ contract ZombieFactory {
         
     */
 
-    function _generateRandomDna(string memory _str) private view {}
+    function _generateRandomDna(string memory _str) private view returns (uint256) {
+        uint rand = uint(keccak256(abi.encodePacked(_str)));
+        return rand % dnaModulus;
+    }
+
+    /*
+
+    Ethereum has the hash function keccak256 built in
+
+    */
 }
