@@ -16,6 +16,11 @@ contract ZombieFactory {
 
     Zombie[] public zombies;
 
+    mapping (uint256 => address) public zombieToOwner;
+    mapping (address => uint256) ownerTozombieCount;
+
+    // A mapping is a key-value store for storing & lookin up data
+
     /* function eatHamburgers(string memory _name, uint _amount) public {
             
             ** it's convention - but not required - to start function parameter
@@ -32,7 +37,14 @@ contract ZombieFactory {
 
     function _createZombie(string memory _name, uint256 _dna) private {
         uint256 id = zombies.push(Zombie(_name, _dna)) - 1;
+        
         emit NewZombie(id, _name, _dna);
+
+
+
+        // msg.sender - is a global variable that is available to all functions which refers to the address of the person (or contract) that called the current function
+        // A contract will sit on the blockchain doing nothing until someone calls one of its functions. There will always be a msg.msg.sender
+
     }
 
     /* 
