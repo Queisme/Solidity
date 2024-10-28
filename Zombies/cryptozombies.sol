@@ -2,6 +2,10 @@
 pragma solidity >=0.5.0 <0.6.0;
 
 contract ZombieFactory {
+
+    // declare event
+    event NewZombie(uint zombieId, string name, uint dna);
+
     uint256 dnaDigits = 16;
     uint256 dnaModulus = 10 ** dnaDigits;
 
@@ -27,7 +31,8 @@ contract ZombieFactory {
     }*/
 
     function _createZombie(string memory _name, uint256 _dna) private {
-        zombies.push(Zombie(_name, _dna));
+        uint256 id = zombies.push(Zombie(_name, _dna)) - 1;
+        emit NewZombie(id, _name, _dna);
     }
 
     /* 
@@ -37,6 +42,12 @@ contract ZombieFactory {
     In Solidity, functions are public by default - meaning any other contract can call your contract's function and execute its code 
     
     Marking your functions private means only other functions within your contract will be able to call that function 
+
+    
+
+    Events are a way for your contract to communicate that something happened on the blockchain to your app front-end which can be listening for certain events & take action when they happen - declare the event with the state variables
+
+    
         
     */
 
@@ -50,4 +61,11 @@ contract ZombieFactory {
     Ethereum has the hash function keccak256 built in
 
     */
+
+   function createRandomzombie(string memory _name) public {
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+    }
+
+
 }
