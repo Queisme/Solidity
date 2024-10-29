@@ -17,7 +17,7 @@ contract ZombieFactory {
     Zombie[] public zombies;
 
     mapping (uint256 => address) public zombieToOwner;
-    mapping (address => uint256) ownerToZombieCount;
+    mapping (address => uint256) ownerZombieCount;
 
     // A mapping is a key-value store for storing & lookin up data
 
@@ -38,10 +38,8 @@ contract ZombieFactory {
     function _createZombie(string memory _name, uint256 _dna) private {
         uint256 id = zombies.push(Zombie(_name, _dna)) - 1;
         zombieToOwner[id] = msg.sender;
-        ownerToZombieCount[msg.sender]++;
+        ownerZombieCount[msg.sender]++;
         emit NewZombie(id, _name, _dna);
-
-
 
         // msg.sender - is a global variable that is available to all functions which refers to the address of the person (or contract) that called the current function
         // A contract will sit on the blockchain doing nothing until someone calls one of its functions. There will always be a msg.msg.sender
@@ -76,9 +74,29 @@ contract ZombieFactory {
     */
 
    function createRandomzombie(string memory _name) public {
+        require(ownerZombieCount[msg.sender] == 0);
         uint randDna = _generateRandomDna(_name);
         _createZombie(_name, randDna);
     }
+
+    // require - makes it so the function will throw an error and stop executing if some condition is not true
+
+
+    /*
+
+    function sayHiToQue(string memory _name) public returns (string memory) {
+        // Solidity doesn't have native string comparison so we have to compare their keccak256 hashes to see if strings are equal
+
+        require(keccak256(abi.encodePacked(_name)) == keccak256(abi.encodePacked("Que")));
+
+        // if true, function will proceed
+
+        return "Hi!";
+    }
+
+
+
+    */
 
 
 }
