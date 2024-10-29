@@ -18,6 +18,7 @@ contract KittyInterface {
         uint256 generation,
         uint256 genes
     );
+}
 
 /*
 
@@ -47,6 +48,12 @@ contract ZombieFeeding is ZombieFactory {
         uint newDna = (myZombie.dna + _targetDna) / 2;
         _createZombie("NoName", newDna);
 
+    }
+
+    function feedOnKitty(uint256 _zombieId, uint256 _kittyId) public {
+        uint256 kittyDna;
+        (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
+        feedAndMultiply(_zombieId, kittyDna);
     }
 
 }
