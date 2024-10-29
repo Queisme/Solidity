@@ -35,7 +35,7 @@ contract ZombieFactory {
             reference types such as: arrays, structs, mappings, strings
     }*/
 
-    function _createZombie(string memory _name, uint256 _dna) private {
+    function _createZombie(string memory _name, uint256 _dna) internal {
         uint256 id = zombies.push(Zombie(_name, _dna)) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
@@ -50,9 +50,13 @@ contract ZombieFactory {
     
     ** it's convention - but not required - to start a private function name with an underscore to differentiate them from public functions **
 
-    In Solidity, functions are public by default - meaning any other contract can call your contract's function and execute its code 
+    In Solidity, functions are PUBLIC by default - meaning any other contract can call your contract's function and execute its code 
     
-    Marking your functions private means only other functions within your contract will be able to call that function 
+    Marking your functions PRIVATE means only other functions within your contract will be able to call that function 
+
+    INTERNAL is the same as PRIVATE - except it's also accessible to contracts that inherit from this contract
+
+    EXTERNAL is similar to PUBLIC - except these functions can ONLY be called outside the contract, meaning, they can't be called by other functions inside that contract
 
     
 
