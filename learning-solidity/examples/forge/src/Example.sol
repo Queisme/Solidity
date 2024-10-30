@@ -7,6 +7,10 @@ contract Example {
     uint8 a = 255; // 0 -> 255
     uint256 b = 22; // alias: uint
 
+    constructor() {
+        a += 1; //results in a runtime error (underflow or overflow)
+    }
+
     int8 c = 127; // -128 -> 127
     int256 d = -55; // alias int256
 
