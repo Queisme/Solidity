@@ -8,7 +8,7 @@ contract ExampleItest is Test {
     Example public example;
 
     function setUp() public {
-        example = new Example();
+        example = new Example(Example.Choice.Right);
     }
     function testExample() public {}
 }
