@@ -36,7 +36,7 @@ contract Example {
         if(myCondition){
             console.log("Waka waka waka");
         }
-        */
+        
        if (choice == Choice.Up){
         console.log("That's up");
        }
@@ -52,5 +52,6 @@ contract Example {
        if (choice == Choice.Left){
         console.log("And that's left");
        }
+       */
     }
 }
