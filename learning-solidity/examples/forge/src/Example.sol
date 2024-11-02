@@ -32,7 +32,7 @@ contract Example {
         //console.logBytes32(bytes32(b));
         //console.logInt(type(int256).min);
         //console.logInt(type(int256).max);
-        /*
+        
         if(myCondition){
             console.log("Waka waka waka");
         }
@@ -52,6 +52,6 @@ contract Example {
        if (choice == Choice.Left){
         console.log("And that's left");
        }
-       */
+       
     }
 }
